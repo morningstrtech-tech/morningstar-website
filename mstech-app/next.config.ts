@@ -11,10 +11,6 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "hoirqrkdgbmvpwutwuwj.supabase.co",
       },
-      {
-        protocol: "https",
-        hostname: "**.vercel.app",
-      },
     ],
   },
   async headers() {

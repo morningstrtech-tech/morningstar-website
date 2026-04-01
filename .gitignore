@@ -1,9 +1,32 @@
+# Common ignores
 node_modules/
-.env
-.env.*
-.DS_Store
-.agent/
-.gemini/
 .next/
 dist/
-uploads/
+build/
+.env
+.env.local
+.env.*.local
+*.log
+*.tmp
+.DS_Store
+.vercel/
+
+# IDE/Tooling
+.vs/
+.vscode/
+.idea/
+.agent/
+.gemini/
+testsprite_tests/
+
+# Project specific
+mstech-app/node_modules/
+mstech-backend/node_modules/
+mstech-app/.next/
+mstech-backend/dist/
+mstech-app/.env
+mstech-backend/.env
+mstech-backend/uploads/
+mstech-backend/*.log
+mstech-backend/src/config/*.local
+mstech-app/out/

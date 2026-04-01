@@ -16,27 +16,17 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Build dynamic CORS origins list
-const allowedOrigins = [
-  "http://localhost:3000",
-  "http://localhost:3001",
-  "https://mstech.agency",
-];
-if (process.env.FRONTEND_URL) {
-  allowedOrigins.push(process.env.FRONTEND_URL);
-}
-
 app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" },
-  contentSecurityPolicy: false,
+  contentSecurityPolicy: false, // For development ease with local images
 }));
 app.use(cors({
-  origin: allowedOrigins,
+  origin: ["http://localhost:3000", "http://localhost:3001", "https://mstech.agency"], // ganti sesuai domain frontend deployment
   credentials: true, // required for better-auth cookies
 }));
 app.use(express.json());
 
-// Serving static files from uploads directory (local dev only, won't persist on Vercel)
+// Serving static files from uploads directory
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
 // 1. Better Auth Handler (Has to be plugged in first for Auth endpoints)
@@ -50,12 +40,6 @@ app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok", message: "mstech-backend is running." });
 });
 
-// Only listen when running locally (not on Vercel)
-if (!process.env.VERCEL) {
-  app.listen(PORT, () => {
-    console.log(`🚀 Backend is running on http://localhost:${PORT}`);
-  });
-}
-
-// Export for Vercel serverless
-export default app;
+app.listen(PORT, () => {
+  console.log(`🚀 Backend is running on http://localhost:${PORT}`);
+});
