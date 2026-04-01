@@ -1,0 +1,870 @@
+[
+  {
+    "id": "TC001",
+    "title": "Homepage loads hero, stats, and tech stack content",
+    "description": "Verifies the homepage displays its primary hero content along with stats and tech stack sections.",
+    "category": "Homepage Hero",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the hero section with a heading and subtitle is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the stats grid and tech stack items are displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Homepage CTA navigates to Services page",
+    "description": "Verifies the primary hero CTA can take the user from the homepage to the services page.",
+    "category": "Homepage Hero",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the call-to-action to view services"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the services page and service package cards are displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Homepage contact link navigates to Contact page",
+    "description": "Verifies the hero contact link navigates to the contact page.",
+    "category": "Homepage Hero",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to contact the team"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the contact page and the contact form is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Tech stack carousel is readable and stable after interaction",
+    "description": "Verifies the tech stack section remains readable after basic user interaction (scroll) to mimic carousel engagement.",
+    "category": "Homepage Hero",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the tech stack section"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the tech stack items to finish initial load"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify multiple tech stack names are displayed and readable"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Homepage loads correctly after viewport change",
+    "description": "Verifies the homepage primary content remains available after resizing viewport (responsive stability).",
+    "category": "Homepage Hero",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Resize the viewport to a narrow mobile width"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the stats grid section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the hero section and stats grid are displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Services page loads main service packages",
+    "description": "Verifies the services page displays the three main service cards with pricing and features.",
+    "category": "Service Packages",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /services"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the main service package cards are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify pricing and feature details are visible for the main packages"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Expand coming soon packages and view additional offerings",
+    "description": "Verifies that expanding the coming-soon section reveals additional package cards.",
+    "category": "Service Packages",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /services"
+      },
+      {
+        "type": "action",
+        "description": "Click the control to view all services"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify additional package cards are displayed in the expanded section"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Collapse coming soon packages to return to main packages only",
+    "description": "Verifies that collapsing the coming-soon section hides the additional package cards.",
+    "category": "Service Packages",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /services"
+      },
+      {
+        "type": "action",
+        "description": "Click the control to view all services"
+      },
+      {
+        "type": "action",
+        "description": "Click the control to hide the expanded services"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the additional package cards are not displayed and only the main packages remain visible"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Select highlighted package navigates to Contact page",
+    "description": "Verifies choosing the highlighted package routes the user to the contact page to request it.",
+    "category": "Service Packages",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /services"
+      },
+      {
+        "type": "action",
+        "description": "Click the button to choose the highlighted package"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the contact page and the contact form is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Select non-highlighted package consult action navigates to Contact page",
+    "description": "Verifies the consult action from a non-highlighted package routes the user to the contact page.",
+    "category": "Service Packages",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /services"
+      },
+      {
+        "type": "action",
+        "description": "Click the button to request a free consultation for a non-highlighted package"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the contact page and the contact form is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Bottom CTA navigates to Contact page",
+    "description": "Verifies the bottom services call-to-action navigates to the contact page.",
+    "category": "Service Packages",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /services"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the bottom call-to-action section"
+      },
+      {
+        "type": "action",
+        "description": "Click the bottom call-to-action to contact for a free consultation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the contact page and the contact form is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Contact page loads form and contact info cards",
+    "description": "Verifies the contact page displays the contact form fields and contact information cards.",
+    "category": "Contact Form",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the contact form fields for name, email, subject, and message are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify contact information cards are displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Submit contact form with required fields missing shows validation error",
+    "description": "Verifies client-side validation prevents submission when the email field is left blank.",
+    "category": "Contact Form",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact"
+      },
+      {
+        "type": "action",
+        "description": "Fill a name into the name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill a subject into the subject field"
+      },
+      {
+        "type": "action",
+        "description": "Fill a message into the message field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the contact form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a validation error is visible indicating the email field is required"
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Invalid email format shows validation error",
+    "description": "Verifies the form shows an email validation error when the email format is invalid.",
+    "category": "Contact Form",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact"
+      },
+      {
+        "type": "action",
+        "description": "Fill a name into the name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill an invalid email into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Fill a subject into the subject field"
+      },
+      {
+        "type": "action",
+        "description": "Fill a message into the message field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the contact form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an email format validation error is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Contact form can be filled with valid inputs without errors shown",
+    "description": "Verifies that entering valid values into all fields leaves the form in a ready-to-submit state without visible validation errors.",
+    "category": "Contact Form",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"Test User\" into the name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"test.user@example.com\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"Project Inquiry\" into the subject field"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"Hello, I would like to discuss a project.\" into the message field"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no validation errors are visible for the filled fields"
+      }
+    ]
+  },
+  {
+    "id": "TC016",
+    "title": "Click contact email card triggers mail action",
+    "description": "Verifies the email contact card is interactive via normal click behavior.",
+    "category": "Contact Form",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact"
+      },
+      {
+        "type": "action",
+        "description": "Click the email contact card"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the browser attempts to open a mail action for the email address"
+      }
+    ]
+  },
+  {
+    "id": "TC017",
+    "title": "Portfolio page loads and displays project cards",
+    "description": "Verifies the portfolio gallery renders project cards with key metadata visible.",
+    "category": "Portfolio Showcase",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /portfolio"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify project cards are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify at least one project card shows a category badge and a tech stack badge"
+      }
+    ]
+  },
+  {
+    "id": "TC018",
+    "title": "Open a live project link from a portfolio card",
+    "description": "Verifies a live project link can be opened from a project card via normal click interaction.",
+    "category": "Portfolio Showcase",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /portfolio"
+      },
+      {
+        "type": "action",
+        "description": "Click the live project link on a project card that is not marked as coming soon"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the browser navigates away from the portfolio site to an external destination"
+      }
+    ]
+  },
+  {
+    "id": "TC019",
+    "title": "Navigate from Portfolio CTA to Contact page",
+    "description": "Verifies the portfolio call-to-action routes the user to the contact page.",
+    "category": "Portfolio Showcase",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /portfolio"
+      },
+      {
+        "type": "action",
+        "description": "Click the call-to-action to start a project"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the contact page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the contact form is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC020",
+    "title": "Placeholder project shows Coming Soon and does not navigate externally",
+    "description": "Verifies non-live projects are marked as coming soon and do not provide an external navigation outcome.",
+    "category": "Portfolio Showcase",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /portfolio"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to find a project card marked as coming soon"
+      },
+      {
+        "type": "action",
+        "description": "Click the project link or visit action for that coming soon project"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user remains on the portfolio page"
+      }
+    ]
+  },
+  {
+    "id": "TC021",
+    "title": "Portfolio project cards show description content",
+    "description": "Verifies portfolio cards include readable descriptive content for projects.",
+    "category": "Portfolio Showcase",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /portfolio"
+      },
+      {
+        "type": "action",
+        "description": "Scroll through the portfolio list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify multiple project cards display a project description"
+      }
+    ]
+  },
+  {
+    "id": "TC022",
+    "title": "How We Work page loads and shows a 6-step timeline",
+    "description": "Verifies the workflow timeline content is visible and complete.",
+    "category": "How We Work Process",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /how-we-work"
+      },
+      {
+        "type": "action",
+        "description": "Scroll through the timeline section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify six numbered steps are displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC023",
+    "title": "How We Work CTA navigates to Contact page",
+    "description": "Verifies the contact call-to-action from the process page routes to the contact page.",
+    "category": "How We Work Process",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /how-we-work"
+      },
+      {
+        "type": "action",
+        "description": "Click the call-to-action to contact now"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the contact page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the contact form is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC024",
+    "title": "Mission page loads and displays vision, mission, values, and quote",
+    "description": "Verifies the mission page primary content is visible, including values grid and closing quote.",
+    "category": "Mission and Values",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /mission"
+      },
+      {
+        "type": "action",
+        "description": "Scroll through the mission page content"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify vision and mission content sections are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify four core values cards are displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC025",
+    "title": "Mission page core values include expected value names",
+    "description": "Verifies the four values shown include the specific value names defined by the product.",
+    "category": "Mission and Values",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /mission"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the core values section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the values Modernisasi Digital, Inovasi Teknologi, Pemberdayaan UMKM, and Kualitas Premium are displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC026",
+    "title": "Mission page closing quote is readable on the page",
+    "description": "Verifies the closing quote section is present and visible to users.",
+    "category": "Mission and Values",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /mission"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the bottom of the mission page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a closing quote section is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC027",
+    "title": "Navigate between pages using global nav links",
+    "description": "Verifies the global navigation can take the user from the homepage to another primary route.",
+    "category": "Navigation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click a top navigation link to go to the services page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the services page"
+      }
+    ]
+  },
+  {
+    "id": "TC028",
+    "title": "Return to homepage by clicking the logo from another page",
+    "description": "Verifies clicking the navbar logo returns the user to the homepage from a different route.",
+    "category": "Navigation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /services"
+      },
+      {
+        "type": "action",
+        "description": "Click the site logo in the global navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the homepage"
+      }
+    ]
+  },
+  {
+    "id": "TC029",
+    "title": "Multi-step navigation journey across several routes",
+    "description": "Verifies the user can navigate across multiple pages using navbar links without direct URL entry.",
+    "category": "Navigation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click a top navigation link to go to the portfolio page"
+      },
+      {
+        "type": "action",
+        "description": "Click a top navigation link to go to the how we work page"
+      },
+      {
+        "type": "action",
+        "description": "Click a top navigation link to go to the contact page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the contact page"
+      }
+    ]
+  },
+  {
+    "id": "TC030",
+    "title": "Mobile hamburger menu toggles open and closed",
+    "description": "Verifies the mobile navigation menu can be opened and then closed.",
+    "category": "Navigation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Set the viewport to a mobile size"
+      },
+      {
+        "type": "action",
+        "description": "Open the mobile hamburger menu"
+      },
+      {
+        "type": "action",
+        "description": "Close the mobile hamburger menu"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the mobile navigation menu is not expanded"
+      }
+    ]
+  },
+  {
+    "id": "TC031",
+    "title": "Use mobile hamburger menu to navigate to another page",
+    "description": "Verifies navigation works from within the mobile menu.",
+    "category": "Navigation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /mission"
+      },
+      {
+        "type": "action",
+        "description": "Set the viewport to a mobile size"
+      },
+      {
+        "type": "action",
+        "description": "Open the mobile hamburger menu"
+      },
+      {
+        "type": "action",
+        "description": "Click a navigation link in the mobile menu to go to the services page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the services page"
+      }
+    ]
+  },
+  {
+    "id": "TC032",
+    "title": "Navbar is present and usable on secondary pages",
+    "description": "Verifies the global navigation renders on a non-home route and enables moving to another route.",
+    "category": "Navigation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /how-we-work"
+      },
+      {
+        "type": "action",
+        "description": "Click a top navigation link to go to the mission page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the mission page"
+      }
+    ]
+  },
+  {
+    "id": "TC033",
+    "title": "Footer internal link navigates to a page",
+    "description": "Verifies clicking an internal footer link routes the user to the linked page.",
+    "category": "Footer",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the footer"
+      },
+      {
+        "type": "action",
+        "description": "Click a footer link that navigates to the services page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the services page"
+      }
+    ]
+  },
+  {
+    "id": "TC034",
+    "title": "Footer internal link works from a non-home page",
+    "description": "Verifies footer links function consistently across pages.",
+    "category": "Footer",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /portfolio"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the footer"
+      },
+      {
+        "type": "action",
+        "description": "Click a footer link that navigates to the contact page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the contact page"
+      }
+    ]
+  },
+  {
+    "id": "TC035",
+    "title": "Footer social icon opens an external profile link (non-placeholder)",
+    "description": "Verifies that a footer social icon navigates away to an external destination when it is not a placeholder.",
+    "category": "Footer",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the footer"
+      },
+      {
+        "type": "action",
+        "description": "Click a footer social media icon that is not a placeholder link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the browser navigates away from the site to an external page"
+      }
+    ]
+  },
+  {
+    "id": "TC036",
+    "title": "Footer placeholder social icon does not provide external navigation",
+    "description": "Verifies that clicking a placeholder social icon does not result in an external profile being opened.",
+    "category": "Footer",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the footer"
+      },
+      {
+        "type": "action",
+        "description": "Click a footer social media icon that is a placeholder link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user remains on the contact page"
+      }
+    ]
+  }
+]

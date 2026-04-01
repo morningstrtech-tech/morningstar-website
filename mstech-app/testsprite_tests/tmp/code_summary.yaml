@@ -1,0 +1,149 @@
+version: "2"
+type: frontend
+tech_stack:
+  - TypeScript
+  - Next.js 16.2.2
+  - React 19.2.4
+  - Tailwind CSS v4
+  - Supabase JS SDK
+  - Lucide React Icons
+routes:
+  - path: /
+    file: src/app/page.tsx
+    auth_required: false
+    description: Homepage with hero section, stats grid, and tech stack display
+  - path: /services
+    file: src/app/services/page.tsx
+    auth_required: false
+    description: Services page showing pricing packages (UMKM, Enterprise, 2.5D) with toggle for coming soon items
+  - path: /contact
+    file: src/app/contact/page.tsx
+    auth_required: false
+    description: Contact page with form (name, email, subject, message) and contact info cards
+  - path: /portfolio
+    file: src/app/portfolio/page.tsx
+    auth_required: false
+    description: Portfolio page showing completed projects with live links
+  - path: /how-we-work
+    file: src/app/how-we-work/page.tsx
+    auth_required: false
+    description: How We Work page with 6-step timeline process
+  - path: /mission
+    file: src/app/mission/page.tsx
+    auth_required: false
+    description: Mission page with vision, mission, values, and quote sections
+features:
+  - name: Homepage Hero
+    description: Landing page with hero section including badge, heading, subtitle, CTA buttons, stats grid, and tech stack carousel
+    files:
+      - src/app/page.tsx
+      - src/components/TechStack.tsx
+    entry_route: /
+    user_interactions:
+      - View hero section with background image and overlay
+      - Click "Lihat Layanan" CTA button to navigate to services
+      - Click "Hubungi Kami" link to navigate to contact
+      - View animated stats grid (Proyek Selesai, Kepuasan Klien, Support, Pengalaman)
+      - View tech stack carousel
+    api_calls: []
+    auth_required: false
+  - name: Service Packages
+    description: Display pricing packages for UMKM, Enterprise, and 2.5D Animated websites, with expandable coming soon section
+    files:
+      - src/app/services/page.tsx
+    entry_route: /services
+    user_interactions:
+      - View 3 main service cards with pricing and features
+      - Click "Lihat Semua Layanan" button to expand coming soon packages
+      - Click "Sembunyikan" button to collapse coming soon packages
+      - Click "Pilih Paket Ini" button on highlighted package to go to contact
+      - Click "Konsultasi Gratis" button on other packages to go to contact
+      - Click bottom CTA "Hubungi Kami untuk Konsultasi Gratis" to go to contact
+    api_calls: []
+    auth_required: false
+  - name: Contact Form
+    description: Contact form that sends messages to the backend API, with contact info cards and social links
+    files:
+      - src/app/contact/page.tsx
+    entry_route: /contact
+    user_interactions:
+      - Fill name input field
+      - Fill email input field
+      - Fill subject input field
+      - Fill message textarea
+      - Click "Kirim Pesan" submit button
+      - See loading spinner while sending
+      - See success confirmation message after send
+      - Click email contact card to open email client
+      - Click phone contact card to make call
+      - Click WhatsApp contact card to open WhatsApp
+      - Click social media icons (Instagram, LinkedIn, GitHub)
+    api_calls:
+      - method: POST
+        endpoint: /api/messages
+    auth_required: false
+  - name: Portfolio Showcase
+    description: Display portfolio of completed projects with live links and tech stack badges
+    files:
+      - src/app/portfolio/page.tsx
+    entry_route: /portfolio
+    user_interactions:
+      - View project cards with icon, category badge, description
+      - Click "Kunjungi Website" on live projects to open external link
+      - View "Coming Soon" label on projects not yet live
+      - Click "Mulai Proyek Anda" CTA to navigate to contact
+    api_calls: []
+    auth_required: false
+  - name: How We Work Process
+    description: 6-step timeline showing the agency workflow from consultation to maintenance
+    files:
+      - src/app/how-we-work/page.tsx
+    entry_route: /how-we-work
+    user_interactions:
+      - View alternating timeline cards with step numbers
+      - Hover over step circles for icon highlight
+      - Click "Hubungi Kami Sekarang" CTA to navigate to contact
+    api_calls: []
+    auth_required: false
+  - name: Mission and Values
+    description: Company mission page with vision/mission cards and core values grid
+    files:
+      - src/app/mission/page.tsx
+    entry_route: /mission
+    user_interactions:
+      - View vision and mission cards
+      - View 4 core values cards (Modernisasi Digital, Inovasi Teknologi, Pemberdayaan UMKM, Kualitas Premium)
+      - Read closing quote
+    api_calls: []
+    auth_required: false
+  - name: Navigation
+    description: Global navbar with logo, page links, and mobile hamburger menu
+    files:
+      - src/components/Navbar.tsx
+    entry_route: /
+    user_interactions:
+      - Click nav links to navigate between pages
+      - Click logo to go to homepage
+      - Open/close mobile hamburger menu
+    api_calls: []
+    auth_required: false
+  - name: Footer
+    description: Global footer with company info, links, and social media icons
+    files:
+      - src/components/Footer.tsx
+    entry_route: /
+    user_interactions:
+      - Click footer links to navigate to pages
+      - Click social media links
+    api_calls: []
+    auth_required: false
+known_limitations:
+  - issue: Contact form sends to localhost:5000 when NEXT_PUBLIC_API_URL env var is not set
+    location: src/app/contact/page.tsx
+    impact: Contact form will fail if backend server is not running locally
+  - issue: Portfolio project links for "Gambar Doeloe" and "Enterprise Dashboard" point to "#"
+    location: src/app/portfolio/page.tsx
+    impact: Users cannot visit those project pages as they are not live yet
+  - issue: Social media links (Instagram, LinkedIn, GitHub) point to "#"
+    location: src/app/contact/page.tsx
+    impact: Social links are non-functional placeholders

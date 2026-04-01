@@ -1,0 +1,18 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3000",
+  "executionArgs": {
+    "projectName": "mstech-app",
+    "projectPath": "c:\\Users\\BPK PEPPI\\Downloads\\darkMS.tech\\mstech-app",
+    "testIds": [],
+    "additionalInstruction": "The website is in Indonesian and English bilingual. All page content is primarily in Indonesian (Bahasa Indonesia). The backend for the contact form may not be running, so contact form submission may fail - that is expected behavior for this test run.",
+    "serverMode": "development",
+    "envs": {
+      "API_KEY": "sk-user-vJwKvunElGugRRZqy0KgkQ01KCHt0_g6IRpEjMv5KZTgWcVLTStPFrNXE_RHh_Nqb5djmX3uCCLCMELtCSI-yQJG_i4L8FnWEPqZR9gcBVMoP9LThA33rb1oZ4iL4wVtyMw"
+    }
+  },
+  "serverPort": 61318,
+  "proxy": "http://1b83718d-ba48-4247-8f91-f494287cb7ca:phYlzqkxI19FsdNegqfuAG5X1Yrt7zv2@tun.testsprite.com:8080"
+}
