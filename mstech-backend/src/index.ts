@@ -64,48 +64,6 @@ app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok", message: "mstech-backend is running." });
 });
 
-// 4. One-time Admin Setup Route
-// DANGER: In production, you might want to delete this after use.
-app.get("/api/admin/setup", async (req, res) => {
-  try {
-    const adminEmail = process.env.ADMIN_EMAIL;
-    const adminPassword = process.env.ADMIN_PASSWORD;
-
-    if (!adminEmail || !adminPassword) {
-      return res.status(400).json({ error: "ADMIN_EMAIL and ADMIN_PASSWORD env vars are not set in Vercel." });
-    }
-
-    console.log(`Setting up admin: ${adminEmail}`);
-
-    // Try to sign up
-    try {
-        await auth.api.signUpEmail({
-            body: {
-                email: adminEmail,
-                password: adminPassword,
-                name: "Super Admin",
-            },
-        });
-    } catch (signupErr: any) {
-        console.log("Signup skipped (likely already exists):", signupErr.message);
-    }
-
-    // Force role to admin in DB
-    await db.update(user)
-      .set({ role: 'admin' })
-      .where(eq(user.email, adminEmail));
-
-    return res.json({ 
-        message: "Admin Setup Successful!", 
-        email: adminEmail,
-        notice: "You can now login to the dashboard."
-    });
-  } catch (error: any) {
-    console.error("Admin setup failed:", error);
-    return res.status(500).json({ error: error.message });
-  }
-});
-
 // Only listen if not in serverless environment
 if (process.env.NODE_ENV !== "production") {
   app.listen(PORT, () => {
