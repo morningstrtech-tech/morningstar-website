@@ -9,9 +9,9 @@ dotenv.config();
 async function initAdmin() {
   console.log("Initializing Admin User...");
   
-  const email = "admin@mstech.agency";
-  const password = "admin123456";
-  const name = "MS.Tech Admin";
+  const email = process.env.ADMIN_EMAIL || "admin@mstech.agency";
+  const password = process.env.ADMIN_PASSWORD || "admin123456";
+  const name = process.env.ADMIN_NAME || "MS.Tech Admin";
 
   try {
     const result = await auth.api.signUpEmail({

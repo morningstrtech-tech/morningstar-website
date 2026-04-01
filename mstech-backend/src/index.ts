@@ -21,7 +21,7 @@ app.use(helmet({
   contentSecurityPolicy: false, // For development ease with local images
 }));
 app.use(cors({
-  origin: ["http://localhost:3000", "http://localhost:3001", "https://mstech.agency"], // ganti sesuai domain frontend deployment
+  origin: ["http://localhost:3000", "http://localhost:3001", "https://mstech.agency", /\.vercel\.app$/], // added production domain and vercel preview patterns
   credentials: true, // required for better-auth cookies
 }));
 app.use(express.json());

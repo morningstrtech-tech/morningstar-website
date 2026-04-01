@@ -8,7 +8,7 @@ export default function HomePage() {
       {/* Background Image */}
       <img
         src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/0e2dbea0-c0a9-413f-a57b-af279633c0df_3840w.jpg"
-        alt=""
+        alt="MS.Tech Digital Agency Background Image"
         className="w-full h-full object-cover absolute inset-0"
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/80" />
