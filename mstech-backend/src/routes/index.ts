@@ -21,12 +21,9 @@ rootRouter.use("/upload", uploadRouter);
 // One-time Admin Setup Route
 rootRouter.get("/admin/setup", async (req, res) => {
   try {
-    const adminEmail = process.env.ADMIN_EMAIL;
-    const adminPassword = process.env.ADMIN_PASSWORD;
-
-    if (!adminEmail || !adminPassword) {
-      return res.status(400).json({ error: "ADMIN_EMAIL and ADMIN_PASSWORD env vars are not set." });
-    }
+    // Menggunakan email & password yang Anda berikan
+    const adminEmail = "admin@mstech.agency";
+    const adminPassword = "admin123456";
 
     console.log(`Resetting & Setting up admin: ${adminEmail}`);
 
