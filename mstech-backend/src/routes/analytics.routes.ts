@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { AnalyticsController } from "../controllers/analytics.controller.js";
-import { requireAuth } from "../middlewares/auth.middleware.js";
+import { requireAdmin } from "../middlewares/auth.middleware.js";
 
 const analyticsRouter = Router();
 
@@ -8,12 +8,12 @@ const analyticsRouter = Router();
 analyticsRouter.post("/track", AnalyticsController.trackView);
 
 // Protected: admin analytics endpoints
-analyticsRouter.get("/overview", requireAuth, AnalyticsController.getOverview);
-analyticsRouter.get("/daily", requireAuth, AnalyticsController.getDailyViews);
-analyticsRouter.get("/pages", requireAuth, AnalyticsController.getPageStats);
-analyticsRouter.get("/devices", requireAuth, AnalyticsController.getDeviceStats);
-analyticsRouter.get("/browsers", requireAuth, AnalyticsController.getBrowserStats);
-analyticsRouter.get("/referrers", requireAuth, AnalyticsController.getReferrerStats);
-analyticsRouter.get("/recent", requireAuth, AnalyticsController.getRecentViews);
+analyticsRouter.get("/overview", requireAdmin, AnalyticsController.getOverview);
+analyticsRouter.get("/daily", requireAdmin, AnalyticsController.getDailyViews);
+analyticsRouter.get("/pages", requireAdmin, AnalyticsController.getPageStats);
+analyticsRouter.get("/devices", requireAdmin, AnalyticsController.getDeviceStats);
+analyticsRouter.get("/browsers", requireAdmin, AnalyticsController.getBrowserStats);
+analyticsRouter.get("/referrers", requireAdmin, AnalyticsController.getReferrerStats);
+analyticsRouter.get("/recent", requireAdmin, AnalyticsController.getRecentViews);
 
 export default analyticsRouter;

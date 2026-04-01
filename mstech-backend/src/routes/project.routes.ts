@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { ProjectController } from "../controllers/project.controller.js";
-import { requireAuth } from "../middlewares/auth.middleware.js";
+import { requireAdmin } from "../middlewares/auth.middleware.js";
 
 const projectRouter = Router();
 
@@ -9,8 +9,8 @@ projectRouter.get("/", ProjectController.getAll);
 projectRouter.get("/:id", ProjectController.getById);
 
 // Protected: CRUD
-projectRouter.post("/", requireAuth, ProjectController.create);
-projectRouter.patch("/:id", requireAuth, ProjectController.update);
-projectRouter.delete("/:id", requireAuth, ProjectController.delete);
+projectRouter.post("/", requireAdmin, ProjectController.create);
+projectRouter.patch("/:id", requireAdmin, ProjectController.update);
+projectRouter.delete("/:id", requireAdmin, ProjectController.delete);
 
 export default projectRouter;

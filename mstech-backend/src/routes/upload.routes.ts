@@ -2,7 +2,7 @@ import { Router } from "express";
 import multer from "multer";
 import path from "path";
 import { fileURLToPath } from "url";
-import { requireAuth } from "../middlewares/auth.middleware.js";
+import { requireAdmin } from "../middlewares/auth.middleware.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -38,8 +38,8 @@ const upload = multer({
 });
 
 // Upload POST endpoint
-// Protected by requireAuth
-router.post("/", requireAuth, upload.single("image"), (req: any, res: any) => {
+// Protected by requireAdmin
+router.post("/", requireAdmin, upload.single("image"), (req: any, res: any) => {
   if (!req.file) {
     return res.status(400).json({ error: "No file uploaded." });
   }
