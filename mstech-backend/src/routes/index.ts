@@ -8,7 +8,7 @@ import uploadRouter from "./upload.routes.js";
 import { auth } from "../auth/auth.js";
 import { db } from "../db/index.js";
 import { user } from "../db/schema.js";
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 
 const rootRouter = Router();
 
@@ -28,28 +28,39 @@ rootRouter.get("/admin/setup", async (req, res) => {
       return res.status(400).json({ error: "ADMIN_EMAIL and ADMIN_PASSWORD env vars are not set." });
     }
 
-    console.log(`Setting up admin: ${adminEmail}`);
+    console.log(`Resetting & Setting up admin: ${adminEmail}`);
 
-    try {
-        await auth.api.signUpEmail({
-            body: {
-                email: adminEmail,
-                password: adminPassword,
-                name: "Super Admin",
-            },
-        });
-    } catch (signupErr: any) {
-        console.log("Signup skipped:", signupErr.message);
+    // Clean up existing user if any (to make sure password & role match)
+    const existing = await db.query.user.findFirst({
+        where: eq(user.email, adminEmail)
+    });
+
+    if (existing) {
+        console.log("Existing user found, removing old data...");
+        // Delete from account table first due to FK
+        await db.execute(sql`DELETE FROM "account" WHERE "userId" = ${existing.id}`);
+        await db.delete(user).where(eq(user.id, existing.id));
     }
 
+    // Now Sign Up Fresh
+    await auth.api.signUpEmail({
+        body: {
+            email: adminEmail,
+            password: adminPassword,
+            name: "MS.Tech Admin",
+        },
+    });
+
+    // Promotion
     await db.update(user)
       .set({ role: 'admin' })
       .where(eq(user.email, adminEmail));
 
     return res.json({ 
-        message: "Admin Setup Successful!", 
+        success: true,
+        message: "Admin Account Freshly Created & Promoted!", 
         email: adminEmail,
-        notice: "You can now login to the dashboard."
+        notice: "Silakan login sekarang."
     });
   } catch (error: any) {
     console.error("Admin setup failed:", error);
