@@ -21,7 +21,28 @@ app.use(helmet({
   contentSecurityPolicy: false, // For development ease with local images
 }));
 app.use(cors({
-  origin: ["http://localhost:3000", "http://localhost:3001", "https://mstech.agency", /\.vercel\.app$/], // added production domain and vercel preview patterns
+  origin: (origin, callback) => {
+    // Allow if no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    
+    const allowedPatterns = [
+      /^http:\/\/localhost:300\d$/, // localhost:3000-3009
+      /^https:\/\/.*\.vercel\.app$/, // any vercel subdomain
+      "https://mstech.agency"         // production domain
+    ];
+
+    const isAllowed = allowedPatterns.some(pattern => {
+      if (typeof pattern === "string") return pattern === origin;
+      return pattern.test(origin);
+    });
+
+    if (isAllowed || origin === process.env.ALLOWED_ORIGIN) {
+      callback(null, true);
+    } else {
+      console.warn(`CORS blocked for origin: ${origin}`);
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true, // required for better-auth cookies
 }));
 app.use(express.json());
