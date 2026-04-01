@@ -40,6 +40,11 @@ app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok", message: "mstech-backend is running." });
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Backend is running on http://localhost:${PORT}`);
-});
+// Only listen if not in serverless environment
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`🚀 Backend is running on http://localhost:${PORT}`);
+  });
+}
+
+export default app;
