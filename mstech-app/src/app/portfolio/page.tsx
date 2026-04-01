@@ -23,6 +23,7 @@ async function getProjects() {
 }
 
 export default async function PortfolioPage() {
+  const API_URL = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000").trim().replace(/\/+$/, "").replace(/\/api\/?$/, "");
   const projects = await getProjects();
 
   return (
@@ -65,7 +66,7 @@ export default async function PortfolioPage() {
                     <div className="relative h-48 bg-white/[0.02] flex items-center justify-center overflow-hidden border-b border-white/5 group-hover:scale-[1.02] transition-transform duration-500">
                       {p.image ? (
                         <img 
-                          src={p.image.startsWith("http") ? p.image : `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}${p.image}`} 
+                          src={p.image.startsWith("http") ? p.image : `${API_URL}${p.image.startsWith("/") ? "" : "/"}${p.image}`} 
                           alt={p.name} 
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />

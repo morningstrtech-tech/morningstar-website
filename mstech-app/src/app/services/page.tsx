@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Check, Crown, Star, ArrowRight, ChevronDown, X, Loader2 } from "lucide-react";
 import { getIcon } from "@/lib/icons";
-import { apiClient } from "@/lib/api-client";
+import { apiClient, API_URL } from "@/lib/api-client";
 
 function ServiceCard({ pkg, index, isExpanded }: { pkg: any; index: number; isExpanded?: boolean }) {
   const Icon = getIcon(pkg.iconName || "package");
@@ -19,7 +19,7 @@ function ServiceCard({ pkg, index, isExpanded }: { pkg: any; index: number; isEx
         {pkg.image ? (
           <div className="w-full h-32 -mt-7 -mx-7 sm:-mt-8 sm:-mx-8 mb-6 overflow-hidden border-b border-white/5 relative group-hover:scale-[1.02] transition-all duration-500">
             <img 
-              src={pkg.image.startsWith("http") ? pkg.image : `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}${pkg.image}`} 
+              src={pkg.image.startsWith("http") ? pkg.image : `${API_URL}${pkg.image.startsWith("/") ? "" : "/"}${pkg.image}`} 
               alt={pkg.name} 
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
             />
