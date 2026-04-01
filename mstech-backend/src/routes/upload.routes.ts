@@ -1,25 +1,13 @@
 import { Router } from "express";
 import multer from "multer";
-import path from "path";
-import { fileURLToPath } from "url";
 import { requireAdmin } from "../middlewares/auth.middleware.js";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { supabase } from "../lib/supabase.js";
+import { v4 as uuidv4 } from "uuid";
 
 const router = Router();
 
-// Configure storage
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    // Root uploads folder
-    cb(null, path.join(__dirname, "../../uploads"));
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    cb(null, file.fieldname + "-" + uniqueSuffix + path.extname(file.originalname));
-  },
-});
+// Configure storage in memory for serverless
+const storage = multer.memoryStorage();
 
 // Filter file types
 const fileFilter = (req: any, file: any, cb: any) => {
@@ -38,21 +26,43 @@ const upload = multer({
 });
 
 // Upload POST endpoint
-// Protected by requireAdmin
-router.post("/", requireAdmin, upload.single("image"), (req: any, res: any) => {
-  if (!req.file) {
-    return res.status(400).json({ error: "No file uploaded." });
+router.post("/", requireAdmin, upload.single("image"), async (req: any, res: any) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: "No file uploaded." });
+    }
+
+    const file = req.file;
+    const fileExt = file.originalname.split(".").pop();
+    const fileName = `${uuidv4()}.${fileExt}`;
+    const filePath = `uploads/${fileName}`;
+
+    // Upload to Supabase Storage
+    const { data, error } = await supabase.storage
+      .from("images") // Pastikan bucket di Supabase bernama 'images'
+      .upload(filePath, file.buffer, {
+        contentType: file.mimetype,
+        upsert: false,
+      });
+
+    if (error) {
+      console.error("Supabase Upload Error:", error);
+      return res.status(500).json({ error: "Failed to upload to Supabase Storage." });
+    }
+
+    // Get public URL
+    const { data: { publicUrl } } = supabase.storage
+      .from("images")
+      .getPublicUrl(filePath);
+
+    res.status(200).json({
+      message: "File uploaded successfully to Supabase",
+      url: publicUrl, // URL publik untuk disimpan ke DB
+    });
+  } catch (err: any) {
+    console.error("Upload route error:", err);
+    res.status(500).json({ error: "Internal server error during upload." });
   }
-
-  // Construct URLs
-  const fileUrl = `/uploads/${req.file.filename}`;
-  // You might want to return the absolute URL if needed by frontend
-  // const fullUrl = `${req.protocol}://${req.get("host")}${fileUrl}`;
-
-  res.status(200).json({
-    message: "File uploaded successfully",
-    url: fileUrl, // Relative URL for saving to DB
-  });
 });
 
 export default router;

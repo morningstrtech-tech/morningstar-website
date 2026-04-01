@@ -3,13 +3,15 @@ import Link from "next/link";
 import { FolderOpen, ExternalLink, ArrowRight } from "lucide-react";
 import { getIcon } from "@/lib/icons";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Portfolio | MS.tech",
   description: "Kumpulan proyek terbaik yang telah dikerjakan oleh MS.tech.",
 };
 
 async function getProjects() {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+  const API_URL = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000").replace(/\/api\/?$/, "");
   try {
     const res = await fetch(`${API_URL}/api/projects`, { cache: "no-store" });
     if (!res.ok) return [];
