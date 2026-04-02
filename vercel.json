@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/mstech-backend/src/index.ts"
+    },
+    {
+      "source": "/admin",
+      "destination": "/mstech-app/admin"
+    },
+    {
+      "source": "/admin/(.*)",
+      "destination": "/mstech-app/admin/$1"
+    },
+    {
+      "source": "/((?!api/|admin).*)",
+      "destination": "/mstech-app/$1"
+    }
+  ]
+}
