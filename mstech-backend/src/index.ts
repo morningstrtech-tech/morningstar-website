@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-import helmet from "helmet";
 import { toNodeHandler } from "better-auth/node";
 import { auth } from "./auth/auth.js";
 import { db } from "./db/index.js";
@@ -16,12 +15,15 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+import helmet from "helmet";
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// @ts-ignore
 app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" },
-  contentSecurityPolicy: false, // For development ease with local images
+  contentSecurityPolicy: false, 
 }));
 app.use(cors({
   origin: (origin, callback) => {
