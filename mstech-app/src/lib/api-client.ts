@@ -1,4 +1,5 @@
-export const API_URL = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000").trim().replace(/\/+$/, "").replace(/\/api\/?$/, "");
+const BASE = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000").trim().replace(/\/+$/, "");
+export const API_URL = BASE.endsWith("/api") ? BASE : `${BASE}/api`;
 
 /**
  * Shared API client for MS.Tech frontend.
