@@ -22,6 +22,7 @@ export const auth = betterAuth({
     "http://localhost:5000", 
     "https://mstech.agency", 
     "https://morningstar-website.vercel.app",
+    "https://mstech-jade.vercel.app",
     "https://morningstar-website-jarozayn-7118s-projects.vercel.app"
   ],
 });
