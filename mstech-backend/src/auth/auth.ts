@@ -17,5 +17,10 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
-  trustedOrigins: ["http://localhost:3000", "http://localhost:5000", "https://mstech.agency"],
+  trustedOrigins: [
+    "http://localhost:3000", 
+    "http://localhost:5000", 
+    "https://mstech.agency", 
+    "https://morningstar-website.vercel.app"
+  ],
 });
