@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Lock, Eye, EyeOff, ArrowRight, Loader2 } from "lucide-react";
 import Image from "next/image";
 
-const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+const API = process.env.NEXT_PUBLIC_API_URL || "https://morningstar-website.vercel.app";
 
 export default function AdminLoginPage() {
   const router = useRouter();
