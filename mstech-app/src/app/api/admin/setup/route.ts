@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'https://morningstar-website.vercel.app';
+  const backendUrl = ""; // Unified deployment, everything is local now!
   
   try {
     // Forward the request to the real express backend

@@ -6,15 +6,7 @@
       "destination": "/mstech-backend/src/index.ts"
     },
     {
-      "source": "/admin",
-      "destination": "/mstech-app/admin"
-    },
-    {
-      "source": "/admin/(.*)",
-      "destination": "/mstech-app/admin/$1"
-    },
-    {
-      "source": "/((?!api/|admin).*)",
+      "source": "/(.*)",
       "destination": "/mstech-app/$1"
     }
   ]

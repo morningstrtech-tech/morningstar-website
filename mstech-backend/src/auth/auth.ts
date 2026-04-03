@@ -3,7 +3,7 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { db } from "../db/index.js";
 
 export const auth = betterAuth({
-  baseURL: "https://morningstar-website.vercel.app",
+  baseURL: "https://mstech-jade.vercel.app",
   database: drizzleAdapter(db, {
     provider: "pg", // Postgres
   }),
@@ -19,16 +19,12 @@ export const auth = betterAuth({
     enabled: true,
   },
   advanced: {
-    // Memungkinkan session menyeberang antar domain (jade ke morningstar)
-    // @ts-ignore
-    useCrossSiteCookies: true,
+    // Session no longer needs to cross domains as they are unified in one Vercel project
   },
   trustedOrigins: [
-    "http://localhost:3000", 
-    "http://localhost:5000", 
-    "https://mstech.agency", 
-    "https://morningstar-website.vercel.app",
+    "http://localhost:3000",
+    "http://localhost:5000",
     "https://mstech-jade.vercel.app",
-    "https://morningstar-website-jarozayn-7118s-projects.vercel.app"
+    "https://mstech.agency"
   ],
 });
