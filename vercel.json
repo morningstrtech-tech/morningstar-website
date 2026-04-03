@@ -1,13 +1,16 @@
 {
   "version": 2,
+  "functions": {
+    "mstech-backend/src/index.ts": {
+      "runtime": "@vercel/node",
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/mstech-backend/src/index.ts"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/mstech-app/$1"
+      "destination": "mstech-backend/src/index.ts"
     }
   ]
 }
