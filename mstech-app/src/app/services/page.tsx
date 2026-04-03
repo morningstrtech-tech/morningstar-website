@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Check, Crown, Star, ArrowRight, ChevronDown, X, Loader2 } from "lucide-react";
-import { getIcon } from "@/lib/icons";
-import { apiClient, API_URL } from "@/lib/api-client";
+import { getIcon } from "../../lib/icons";
+import { apiClient, API_URL } from "../../lib/api-client";
 
 function ServiceCard({ pkg, index, isExpanded }: { pkg: any; index: number; isExpanded?: boolean }) {
   const Icon = getIcon(pkg.iconName || "package");

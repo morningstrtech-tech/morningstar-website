@@ -8,7 +8,7 @@ import {
   LogOut, ChevronLeft, ChevronRight, ArrowLeft
 } from "lucide-react";
 import { useState } from "react";
-import { authClient } from "@/lib/auth-client";
+import { authClient } from "../../lib/auth-client";
 
 const navItems = [
   { href: "/admin/dashboard", label: "Overview", icon: LayoutDashboard },

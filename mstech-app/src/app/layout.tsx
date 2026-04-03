@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Instrument_Serif } from "next/font/google";
 import "./globals.css";
-import LayoutShell from "@/components/LayoutShell";
+import LayoutShell from "../components/LayoutShell";
 
 const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],

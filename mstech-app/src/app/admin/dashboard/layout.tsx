@@ -1,9 +1,9 @@
 "use client";
 
-import AdminSidebar from "@/components/admin/AdminSidebar";
+import AdminSidebar from "../../../components/admin/AdminSidebar";
 import { useRouter } from "next/navigation";
 import { Loader2, Menu, X } from "lucide-react";
-import { useSession } from "@/lib/auth-client";
+import { useSession } from "../../../lib/auth-client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";

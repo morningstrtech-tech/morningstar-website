@@ -1,3 +1,2 @@
-import app from "../mstech-backend/src/index.js";
-
+import app from "../mstech-backend/src/index";
 export default app;

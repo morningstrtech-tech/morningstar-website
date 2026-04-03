@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FolderOpen, ExternalLink, ArrowRight } from "lucide-react";
-import { getIcon } from "@/lib/icons";
+import { getIcon } from "../../lib/icons";
 
 export const dynamic = "force-dynamic";
 

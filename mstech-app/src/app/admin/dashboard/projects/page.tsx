@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { Plus, Search, Filter, Pencil, Trash2, ExternalLink, Loader2, Image as ImageIcon, X, Check, Activity } from "lucide-react";
-import { apiClient, API_URL } from "@/lib/api-client";
-import ImageUpload from "@/components/admin/ImageUpload";
+import { apiClient, API_URL } from "../../../../lib/api-client";
+import ImageUpload from "../../../../components/admin/ImageUpload";
 
 type Project = {
   id: string;

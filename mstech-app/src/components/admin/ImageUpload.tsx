@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { Upload, X, Loader2, Image as ImageIcon, AlertCircle } from "lucide-react";
-import { apiClient, API_URL } from "@/lib/api-client";
+import { apiClient, API_URL } from "../../lib/api-client";
 
 interface ImageUploadProps {
   value: string;

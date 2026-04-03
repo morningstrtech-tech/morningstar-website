@@ -5,7 +5,7 @@ import {
   Eye, Users, Monitor, Smartphone, Tablet, Globe, TrendingUp,
   BarChart3, Activity
 } from "lucide-react";
-import { apiClient } from "@/lib/api-client";
+import { apiClient } from "../../../lib/api-client";
 
 type Overview = { totalViews: number; uniqueVisitors: number; todayViews: number; todayUnique: number };
 type DailyData = { date: string; views: number; uniqueVisitors: number }[];

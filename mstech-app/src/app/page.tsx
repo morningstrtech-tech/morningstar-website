@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Sparkles, Rocket, Code2, Zap, Shield, Globe } from "lucide-react";
-import TechStack from "@/components/TechStack";
+import TechStack from "../components/TechStack";
 
 export default function HomePage() {
   return (
