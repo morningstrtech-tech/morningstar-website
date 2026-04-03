@@ -3,6 +3,7 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { db } from "../db/index.js";
 
 export const auth = betterAuth({
+  baseURL: "https://morningstar-website.vercel.app",
   database: drizzleAdapter(db, {
     provider: "pg", // Postgres
   }),

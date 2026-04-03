@@ -55,8 +55,8 @@ app.use(express.json());
 // Serving static files from uploads directory
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
-// 1. Better Auth Handler (Has to be plugged in first for Auth endpoints)
-app.use("/api/auth", (req, res) => toNodeHandler(auth)(req, res));
+// 1. Better Auth Handler
+app.all("/api/auth/*", (req, res) => toNodeHandler(auth)(req, res));
 
 // 2. Application API Routes
 app.use("/api", rootRouter);
