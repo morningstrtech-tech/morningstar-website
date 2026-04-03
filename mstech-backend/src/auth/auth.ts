@@ -3,7 +3,7 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { db } from "../db/index.js";
 
 export const auth = betterAuth({
-  baseURL: "https://mstech-jade.vercel.app",
+  baseURL: process.env.BETTER_AUTH_URL || "http://localhost:5000",
   database: drizzleAdapter(db, {
     provider: "pg", // Postgres
   }),
