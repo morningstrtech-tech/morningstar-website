@@ -17,6 +17,11 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  advanced: {
+    // Memungkinkan session menyeberang antar domain (jade ke morningstar)
+    // @ts-ignore
+    useCrossSiteCookies: true,
+  },
   trustedOrigins: [
     "http://localhost:3000", 
     "http://localhost:5000", 
