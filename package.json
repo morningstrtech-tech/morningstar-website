@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "cd mstech-app && npm run build && cd .. && rm -rf .next && mv mstech-app/.next ./.next"
+    "build": "cd mstech-app && npm run build && cd .. && node -e \"const fs=require('fs'); fs.rmSync('.next', {recursive:true, force:true}); fs.renameSync('mstech-app/.next', '.next')\""
   },
   "dependencies": {
     "@better-auth/utils": "^0.1.1",
